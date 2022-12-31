@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from abc import ABCMeta, abstractmethod
 
 from gabriel_nlopt.core.types import Array2x2, Float, Vector2
