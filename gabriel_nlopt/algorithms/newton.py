@@ -6,13 +6,13 @@ from gabriel_nlopt.core.function import Function
 from gabriel_nlopt.core.types import Float, Vector2
 
 
-def gradient_method(
+def newton_method(
     x0: Vector2,
     objective: Function,
     eta: Float = constants.DEFAULT_ETA,
     gama: Float = constants.DEFAULT_GAMA,
-    max_iterations: int = constants.DEFAULT_MAX_ITERATIONS_GRADIENT,
-    no_improvement_limit: int = constants.DEFAULT_NO_IMPROVEMENT_LIMIT_GRADIENT,
+    max_iterations: int = constants.DEFAULT_MAX_ITERATIONS_NEWTON,
+    no_improvement_limit: int = constants.DEFAULT_NO_IMPROVEMENT_LIMIT_NEWTON,
     debug: bool = constants.DEFAULT_DEBUG,
 ) -> Vector2:
     current_objective = np.inf
@@ -33,7 +33,7 @@ def gradient_method(
             best_x = x0
             print("Objective is -inf")
             break
-        d = -objective.gradient(x0)
+        d = np.linalg.solve(objective.hessian(x0), objective.gradient(x0))
         t = step_size(eta, gama, x0, d, objective)
         x0 += t * d
         current_objective = objective(x0)
