@@ -33,7 +33,7 @@ def newton_method(
             best_x = x0
             print("Objective is -inf")
             break
-        d = np.linalg.solve(objective.hessian(x0), objective.gradient(x0))
+        d = -np.linalg.solve(objective.hessian(x0), objective.gradient(x0))
         t = step_size(eta, gama, x0, d, objective)
         x0 += t * d
         current_objective = objective(x0)
