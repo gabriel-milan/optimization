@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from .core.constants import constants
 from .core.function import Function
 from .core.types import Float, Vector2
