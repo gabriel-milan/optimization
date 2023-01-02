@@ -7,8 +7,8 @@ from gabriel_nlopt.core.types import Float, Vector2
 
 
 def gradient_method(
-    x0: Vector2,
     objective: Function,
+    x0: Vector2,
     eta: Float = constants.DEFAULT_ETA,
     gama: Float = constants.DEFAULT_GAMA,
     max_iterations: int = constants.DEFAULT_MAX_ITERATIONS_GRADIENT,
